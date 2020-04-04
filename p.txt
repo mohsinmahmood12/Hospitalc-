@@ -1,0 +1,46 @@
+#include<iostream>
+#include<string>
+using namespace std;
+class entertainment
+{
+	public:
+	string Title;
+	string releasedate;
+	string *Genre;
+	string type;
+	string Runtime;
+	string country;
+	string *actors;
+	double rating;
+	
+	
+		entertainment(int s)
+		{
+			Genre= new string[s];
+		}
+		~entertainment()
+		{
+			delete[]Genre;
+		}
+		
+		void getdata();
+
+	
+};
+void entertainment::getdata()
+{
+	cout<<"Enter the title of movie"<<endl;
+	cin>>Title;
+	
+}
+int main()
+{
+	entertainment obj1;
+	obj1.Title="Game of thornes";
+	obj1.releasedate="23-5-2019";
+	obj1(3);
+	obj1.type="Action";
+	obj1.Runtime="3 hours";
+	obj1.country="America";
+	obj.getdata();
+}
