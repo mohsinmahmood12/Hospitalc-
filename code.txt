@@ -1,0 +1,428 @@
+#include<bits/stdc++.h>
+using namespace std;
+struct doct
+{
+	string name;
+	string address;
+	string calander[6];
+	string med[3];
+	int medFee;
+	int pat;
+	int fees;
+}D[20];
+struct patient
+{
+	string name;
+	string Dname;
+	int DTime;
+}P[20];
+void doctData();
+void AllDoctor(int k);
+void DoctorNearby(int k);
+void DoctRank(int k);
+void doctor(doct D[], int opt2, int k);
+void DoctPrescription(int k);
+void medname(doct D[]);
+void Tfee(int opt2);
+int main()
+{
+	int  opt1, opt3, k = 0;
+	bool b1,b2,b3;
+	doctData();
+	char ch;
+	system ("COLOR 70");
+	do
+	{	
+		string s;
+		system("CLS");
+		cout << "\t\t*****Doctor's Appointment*****\n" << endl;
+		cout << "Enter Your Name : ";
+		getline(cin, s);
+		for(int i=0;i<20;i++)
+		{
+			if(s==P[i].name)
+			{
+				b1 = false;
+				k = i;
+				break;
+			}
+			else
+			b1= true;
+		}
+		if(b1==true)
+		{
+			do
+			{
+				b3=true;
+				P[k].name = s;
+			system("CLS");
+			cout << "\t\t*****Doctor's Appointment*****\n" << endl;
+			cout << "Hello " << P[k].name << "!" << endl;
+			cout << "Press The Following For Access:-" << endl;
+			cout << "1. For Booking." << endl;
+			cout << "Enter Your Choice : ";
+			cin >> opt1;
+			if(opt1==1)
+			{
+					do
+		   			{
+		   				b1 = true;
+					   	system("CLS");
+						cout << "\t\t*****Doctor's Appointment*****\n" << endl;
+						cout << "\t\t\t***Booking***\n" << endl;
+						cout << "1. To See All Doctor's List." << endl;
+						cout << "2. To See Doctor Nearby." << endl;
+						cout << "3. To See Doctor By Ranking." << endl;
+						cout << "\nEnter Your Choice : ";
+						cin >> opt3;
+						system("CLS");
+            			cout << "\t\t*****Doctor's Appointment*****\n" << endl;
+						switch(opt3)
+						{
+						case 1:
+							AllDoctor(k);
+							break;
+						case 2:
+							DoctorNearby(k);
+							break;
+						case 3:
+                			DoctRank(k);
+							break;
+            			default:
+                			cout << "Invalid Choice." << endl;
+                			b1 = false;
+						}
+					}
+					while(b1==false);
+		   }
+		   else
+		   b3=false;
+			}
+			while(b3==false);
+		}
+		else
+		{
+			do
+			{
+				b2=true;
+				system("CLS");
+				cout << "\t\t*****Doctor's Appointment*****\n" << endl;
+				cout << "Hello " << P[k].name << "! You Booked " << P[k].Dname << " On " << P[k].DTime << ":00 P.M.\n" << endl;
+				cout << "Press The Following For Access:-" << endl;
+				cout << "2. To See Doctor's Prescription." << endl;
+				cout << "Enter Your Choice : ";
+				cin >> opt1;
+				if(opt1==2)
+				{
+		    		DoctPrescription(k);
+				}
+				else
+				b2=false;
+			}
+			while(b2==false);
+		}
+		
+		cout << "Do You Want To Continue? (y/n) : ";
+		cin >> ch;
+		cin.ignore();
+		k++;
+	} 
+	while (ch != 'n');
+}
+void doctData()
+{
+	int j = 0;
+	for (int i = 0; i < 20; i++)
+	{
+		D[i].medFee = 600;
+		D[i].fees = rand() % 5000 + 1000;
+	}
+	for (char i = 'A'; i <= 'T'; i++)
+	{
+		D[j].name = "Dr.";
+		D[j].name += i;
+		j++;
+	}
+	for (int i = 0; i < 20; i++)
+	{
+		D[i].pat = rand() % 150 + 10;
+		for (int k = 0; k < 6; k++)
+		{
+			D[i].calander[k] = "Available.";
+		}
+	}
+	for (int i = 0; i < 20; i++)
+	{
+		if (i%3==0)
+			D[i].address = 'A';
+		else if (i%4==0)
+			D[i].address = 'B';
+		else
+			D[i].address = 'C';
+	}
+}
+void AllDoctor(int k)
+{
+				int opt2;
+				bool b1 = true;
+				do
+				{
+				for (int i = 0; i < 20; i++)
+				{
+					cout << i + 1 << ". " << D[i].name << "\t\t(Rs. " << D[i].fees << ")" << endl;
+				}
+				
+					cout << "\nEnter Your Choice : ";
+				cin >> opt2;
+				system("CLS");
+                cout << "\t\t*****Doctor's Appointment*****\n" << endl;
+				switch (opt2)
+				{
+				case 1:
+					doctor(D, opt2, k);
+					break;
+				case 2:
+					doctor(D, opt2, k);
+					break;
+				case 3:
+					doctor(D, opt2, k);
+					break;
+				case 4:
+					doctor(D, opt2, k);
+					break;
+				case 5:
+					doctor(D, opt2, k);
+					break;
+				case 6:
+					doctor(D, opt2, k);
+					break;
+				case 7:
+					doctor(D, opt2, k);
+					break;
+				case 8:
+					doctor(D, opt2, k);
+					break;
+				case 9:
+					doctor(D, opt2, k);
+					break;
+				case 10:
+					doctor(D, opt2, k);
+					break;
+				case 11:
+					doctor(D, opt2, k);
+					break;
+				case 12:
+					doctor(D, opt2, k);
+					break;
+				case 13:
+					doctor(D, opt2, k);
+					break;
+				case 14:
+					doctor(D, opt2, k);
+					break;
+				case 15:
+					doctor(D, opt2, k);
+					break;
+				case 16:
+					doctor(D, opt2, k);
+					break;
+				case 17:
+					doctor(D, opt2, k);
+					break;
+				case 18:
+					doctor(D, opt2, k);
+					break;
+				case 19:
+					doctor(D, opt2, k);
+					break;
+				case 20:
+					doctor(D, opt2, k);
+					break;
+                default:
+                    {
+                    	cout << "Invalid Choice." << endl;
+                    	b1 = false;
+					}
+				}
+				}
+				while(b1 == false);
+}
+void DoctorNearby(int k)
+{
+				int opt4;
+				string ch2;
+				bool b = true;
+				system("CLS");
+                cout << "\t\t*****Doctor's Appointment*****\n" << endl;
+				cout << "Enter Your Sector : ";
+				cin >> ch2;
+				for (int i = 0; i < 20; i++)
+				{
+					if (ch2 == D[i].address)
+					{
+						cout << i + 1 << ". " << D[i].name << "\t\t(Rs. " << D[i].fees << ")" << endl;
+						b = false;
+					}
+				}
+				if (b == true)
+					{
+						bool b1 = true;
+						cout << "Sorry No Doctor Is Available Nearby." << endl;
+						do
+						{
+						cout << "Press 1 To See All Doctor's List" << endl;
+						cout << "Press 2 To See Doctor By Rank" << endl;
+						cout << "\nEnter Your Choice : ";
+						cin>>opt4;
+						if(opt4==1)
+						AllDoctor(k);
+						else if(opt4==2)
+						DoctRank(k);
+						else
+						{
+							system("cls");
+							cout << "Wrong Choice" << endl;
+							b1 = false;
+						}
+						}
+						while(b1 == false);
+					}
+				else
+				{
+					cout << "\nEnter Your Choice : ";
+					cin >> opt4;
+					doctor(D, opt4, k);
+				}
+}
+void DoctRank(int k)
+{
+				system("CLS");
+                cout << "\t\t*****Doctor's Appointment*****\n" << endl;
+				    int top = D[0].pat;
+				for (int i = 1; i < 20; i++)
+				{
+					if (D[i].pat > top)
+						top = D[i].pat;
+				}
+				for (int i = 0; i < 20; i++)
+				{
+					if (D[i].pat == top)
+					{
+						cout << i+1 << ". " << D[i].name << endl;
+						doctor(D, i + 1, k);
+					}
+				}
+}
+void doctor(doct D[], int opt2, int k)
+{
+	int opt3;
+	bool b, b1;
+	do
+	{
+	b = true;
+	system("CLS");
+    cout << "\t\t*****Doctor's Appointment*****\n" << endl; 
+	cout << "**" << opt2 << ". " << D[opt2-1].name << " Calander**" << endl;;
+	for (int i = 0; i < 6; i++)
+		cout << i + 1 << ".  " << i + 2 << ":00 P.M : " << D[opt2 - 1].calander[i] << endl;
+	do
+	{
+	b1 = true;
+	cout << "\nEnter Your Choice : ";
+	cin >> opt3;
+	if (opt3 > 0 && opt3 < 7)
+	{
+		if (D[opt2 - 1].calander[opt3 - 1] == "Available.")
+		{
+			P[k].Dname = D[opt2-1].name;
+			P[k].DTime = opt3+1;
+			D[opt2 - 1].calander[opt3 - 1] = "Booked.";
+			cout << "You Booked " << D[opt2-1].name << " On " << opt3+1 << ":00 P.M." << endl;
+		}
+		else
+			{
+				cout << "\nSorry, The Doctor Is Already Booked On This Hour." << endl;
+				cout << "Try Another Slot." << endl;
+				b1 = false;
+			}
+	}
+	else
+		b = false;
+	}
+	while(b1==false);
+	}
+	while(b==false);
+}
+void DoctPrescription(int k)
+{
+	
+    int opt2, opt5;
+	bool b, b1 = true;
+	medname(D);
+	do
+	{
+		b = true;
+		system("CLS");
+		cout << "\t\t*****Doctor's Prescription*****\n" << endl;
+		cout << "\t***" << P[k].Dname << "***" << endl;
+		for(int i=0;i<20;i++)
+		{
+			if(P[k].Dname==D[i].name)
+			{
+				opt2=i+1;
+				for(int j=0;j<3;j++)
+				{
+					cout << D[i].med[j] << endl;
+				}
+			}
+		}
+		cout << "\nPress 1 To Check Your Feees." << endl;
+		cout << "\nEnter Your Choice : ";
+		cin >> opt5;
+		if (opt5 == 1)
+		{
+			b1 = true;
+			Tfee(opt2);
+		}
+		else
+		{
+			b1 = false;
+		} 
+	}
+	while(b1==false);
+}
+void medname(doct D[])
+{
+	int j = 0;
+	D[0].med[0] = "AUGMENTIN";
+	D[0].med[1] = "PANADOL";
+	D[0].med[2] = "FLAGYL";
+	D[1].med[0] = "ARINAC";
+	D[1].med[1] = "NEXUM";
+	D[1].med[2] = "BRUFEN";
+	D[2].med[0] = "NOVIDAT";
+	D[2].med[1] = "CALAMOX";
+	D[2].med[2] = "AMOXIL";
+	D[3].med[0] = "GETRYL";
+	D[3].med[1] = "LACTOGEN 1";
+	D[3].med[2] = "VELOSEF";
+	D[4].med[0] = "CEFSPAN";
+	D[4].med[1] = "OXIDIL";
+	D[4].med[2] = "RISEK";
+	for (int i = 5; i < 20; i++)
+	{
+		if (i % 5 == 0)
+			j = 0;
+		for (int k = 0; k < 3; k++)
+		{
+			D[i].med[k] = D[j].med[k];
+		}
+		j++;
+	}
+}
+void Tfee(int opt2)
+{
+	cout << "Doctor Fee = " << D[opt2 - 1].fees << endl;
+	cout << "Medicine Feee = " << D[opt2 - 1].medFee << endl;
+	cout << "\nTotal Fee = " << D[opt2 - 1].fees + D[opt2 - 1].medFee << endl;
+}
